@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "pelicula.h"
 #include "actor.h"
 
 void inicializarActor(eActor l[])
@@ -39,11 +38,11 @@ eActor getActor(int aux, eActor l[])
 void mostrarPorPais(eActor elista[],int tam)
 {
     int i,j;
-    for (i = 0; i < tam; i++)
+    for (i = 0; i < tam-1; i++)
 	{
-		for (j = 0; j < tam; j++)
+		for (j = i+1; j < tam; j++)
 		{
-			if (strcmp(elista[j].pais, elista[i].pais))
+			if (strcmp(elista[j].pais, elista[i].pais) < 1)
 			{
 				eActor tmp = elista[i];
 				elista[i] = elista[j];
@@ -58,4 +57,14 @@ void mostrarPorPais(eActor elista[],int tam)
     }
     system("pause");
     system("cls");
+}
+
+void mostrarActores(eActor l[], tam)
+{
+    int i;
+    printf("ID\tNombre\tNacionalidad");
+    for(i=0; i< tam;i++)
+    {
+        printf("%d\t%s\t%s", l[i].id, l[i].nombre, l[i].pais);
+    }
 }

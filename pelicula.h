@@ -1,19 +1,22 @@
 #ifndef PELICULA_H_INCLUDED
 #define PELICULA_H_INCLUDED
 #include "actor.h"
-int idCounter = 1000;
+
 typedef struct
 {
     int estado;
     int id;
     int codigo;
     char titulo[50];
-    char fecha[20];
+    int anio;
     int generoid;
+    int actorid;
     eActor principal;
 }ePelicula;
 
 #endif // PELICULA_H_INCLUDED
+
+void inicializarPelicula(ePelicula[], eActor[], int, int);
 
 /** \brief Muestra las peliculas que no tienen actor principal en el(si principal.id == -1)
  *
@@ -21,7 +24,7 @@ typedef struct
  * \return void
  *
  */
-void mostrarPeliculasSA(ePelicula []);
+void mostrarPeliculasSA(ePelicula [], int);
 
 /** \brief Muestra las peliculas que tienen actor principal(si principal id != -1)
  *
@@ -29,7 +32,7 @@ void mostrarPeliculasSA(ePelicula []);
  * \return void
  *
  */
-void mostrarPeliculasCA(ePelicula []);
+void mostrarPeliculasCA(ePelicula [], eActor[], int);
 
 
 /** \brief Usado en mostrarPeliculaCA y mostrarPeliculaSA para cambiar los id de genero por strings con el genero correspondiente
@@ -38,14 +41,14 @@ void mostrarPeliculasCA(ePelicula []);
  * \return char: Genero correspondiente
  *
  */
-char generoDePelicula(int);
+const char * generoDePelicula(int);
 
 /** \brief Usado en agregarPelicula para pedirle los datos al usuario
  *
  * \return ePelicula: Resultado final de la carga de datos
  *
  */
-ePelicula pedirPelicula(eActor [], int);
+ePelicula pedirPelicula(eActor [], int, int);
 
 /** \brief Agrega una pelicula al array pidiendole datos al usuario
  *
@@ -53,7 +56,7 @@ ePelicula pedirPelicula(eActor [], int);
  * \return void
  *
  */
-int insertarPelicula(ePelicula [], eActor[], int);
+int insertarPelicula(ePelicula [], eActor[], int, int);
 
 /** \brief Revisa si hay lugar en el array para insertar una pelicula (devuelve indice en el array o -1 si no hay lugar)
  *
@@ -90,9 +93,13 @@ int buscarPorCodigo(ePelicula[],int, int);
  */
 void borrarPelicula(ePelicula[], int);
 
-ePelicula editarPelicula(ePelicula, int);//COMPLETAR
+void editarPelicula(ePelicula[], eActor[], int, int);//COMPLETAR
 
-void mostrarPorEstreno();
+void mostrarPorEstreno(ePelicula[], int);
+
+void mostrarTodo(ePelicula[],eActor[], int);
+
+void mostrarInAmerica(ePelicula[], eActor[], int);
 
 /** \brief Muestra un error con un mensaje.
  *
@@ -101,3 +108,5 @@ void mostrarPorEstreno();
  *
  */
 void mostrarError(char []);
+
+

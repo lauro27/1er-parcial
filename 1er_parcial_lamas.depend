@@ -1,17 +1,16 @@
 # depslib dependency file v1.0
-1557420788 source:d:\1er_parcial_lamas\actor.c
+1558014928 source:d:\1er_parcial_lamas\actor.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"pelicula.h"
 	"actor.h"
 
-1557422004 d:\1er_parcial_lamas\pelicula.h
+1558016556 d:\1er_parcial_lamas\pelicula.h
 	"actor.h"
 
-1557420713 d:\1er_parcial_lamas\actor.h
+1558014227 d:\1er_parcial_lamas\actor.h
 
-1557422097 source:d:\1er_parcial_lamas\main.c
+1558016560 source:d:\1er_parcial_lamas\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -43,4 +42,10 @@
 	<string.h>
 	"pelicula.h"
 	"actor.h"
+
+1558016816 source:d:\1er_parcial_lamas\pelicula.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pelicula.h"
 

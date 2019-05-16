@@ -12,29 +12,40 @@
 
 void menuMostrar(ePelicula[], eActor[]);
 
+
+
 int main()
 {
-    ePelicula listaPelicula[TAM];
+    int idC = 1000;
+    ePelicula listaPelicula[TAMPELI];
     eActor listaActor[TAM];
-    inicializarActor(listaActor);
+
     int i;
-    for(i = 0; i<sizeof(listaPelicula); i++)
+    for(i = 0; i<TAMPELI; i++)
     {
         listaPelicula[i].estado = 0;
     }
+    inicializarPelicula(listaPelicula, listaActor, TAMPELI, TAM);
+    inicializarActor(listaActor);
     int end = FALSE;
     int opcion;
     do{
-        printf("1 - ALTA\n2 - MOSTRAR\n3 - SALIR");
+        printf("1 - ALTA\n2 - MODIFICAR\n3 - BAJA\n4 - MOSTRAR\n5 - SALIR\n");
         scanf("%d", &opcion);
         switch(opcion){
             case 1:
-                insertarPelicula(listaPelicula, listaActor, TAMPELI);
+                insertarPelicula(listaPelicula, listaActor, TAMPELI, idC);
                 break;
             case 2:
-                menuMostrar(listaPelicula, listaActor);
+                editarPelicula(listaPelicula, listaActor, TAMPELI, TAM);
                 break;
             case 3:
+                borrarPelicula(listaPelicula, TAMPELI);
+                break;
+            case 4:
+                menuMostrar(listaPelicula, listaActor);
+                break;
+            case 5:
                 end = TRUE;
                 break;
             }
@@ -45,15 +56,26 @@ int main()
 void menuMostrar(ePelicula p[], eActor a[])
 {
     int op;
-    printf("1 - Mostrar peliculas con actor principal\n2 - Mostrar peliculas sin actor principal\n");
+    printf("1 - Mostrar peliculas con actor principal\n2 - Mostrar peliculas sin actor principal\n3 - Mostrar peliculas ordenadas por año de estreno\n4 - Mostrar actores ordenados por país\n5 - Mostrar Todo\n6 - Mostrar Actores de EEUU\n");
     scanf("%d", &op);
     switch(op){
     case 1:
-        mostrarPeliculasCA(p);
+        mostrarPeliculasCA(p,a, TAMPELI);
         break;
     case 2:
-        mostrarPeliculasSA(p);
+        mostrarPeliculasSA(p, TAMPELI);
         break;
+    case 3:
+        mostrarPorEstreno(p, TAMPELI);
+        break;
+    case 4:
+        mostrarPorPais(a, TAM);
+        break;
+    case 5:
+        mostrarTodo(p,a,TAMPELI);
+        break;
+    case 6:
+        mostrarInAmerica(p,a,TAMPELI);
     }
 
 }
