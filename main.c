@@ -8,6 +8,7 @@
 #define TRUE 1
 #define FALSE 0
 #define TAM 5
+#define TAMPELI 10
 
 void menuMostrar(ePelicula[], eActor[]);
 
@@ -28,7 +29,7 @@ int main()
         scanf("%d", &opcion);
         switch(opcion){
             case 1:
-                insertarPelicula(listaPelicula, listaActor);
+                insertarPelicula(listaPelicula, listaActor, TAMPELI);
                 break;
             case 2:
                 menuMostrar(listaPelicula, listaActor);

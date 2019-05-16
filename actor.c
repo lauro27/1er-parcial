@@ -6,21 +6,21 @@
 
 void inicializarActor(eActor l[])
 {
-    l[1].id = 1;
-    strcpy(l[1].nombre, "Julieta Roberto");
-    strcpy(l[1].pais, "EEUU");
-    l[2].id = 2;
-    strcpy(l[2].nombre, "Roberto Deniro");
-    strcpy(l[2].pais, "EEUU");
-    l[3].id = 3;
-    strcpy(l[3].nombre, "Richar Darin");
+    l[0].id = 1;
+    strcpy(l[0].nombre, "Julieta Roberto");
+    strcpy(l[0].pais, "EEUU");
+    l[1].id = 2;
+    strcpy(l[1].nombre, "Richar Darin");
+    strcpy(l[1].pais, "Argentina");
+    l[2].id = 3;
+    strcpy(l[2].nombre, "NicoleKidman");
+    strcpy(l[2].pais, "Australia");
+    l[3].id = 4;
+    strcpy(l[3].nombre, "Tita Merelo");
     strcpy(l[3].pais, "Argentina");
-    l[4].id = 4;
-    strcpy(l[4].nombre, "Tita Merelo");
-    strcpy(l[4].pais, "Argentina");
-    l[5].id = 5;
-    strcpy(l[5].nombre, "Sandro");
-    strcpy(l[5].pais,"Argentina");
+    l[4].id = 5;
+    strcpy(l[4].nombre, "Natalia Oreiro");
+    strcpy(l[4].pais,"Uruguay");
 }
 
 eActor getActor(int aux, eActor l[])
@@ -34,4 +34,28 @@ eActor getActor(int aux, eActor l[])
             }
     }
     return l[i];
+}
+
+void mostrarPorPais(eActor elista[],int tam)
+{
+    int i,j;
+    for (i = 0; i < tam; i++)
+	{
+		for (j = 0; j < tam; j++)
+		{
+			if (strcmp(elista[j].pais, elista[i].pais))
+			{
+				eActor tmp = elista[i];
+				elista[i] = elista[j];
+				elista[j] = tmp;
+			}
+		}
+	}
+	for(i=0; i< tam;i++)
+    {
+            printf(" ID: %d\n Nombre: %s\n Pais: %s\n", elista[i].id, elista[i].nombre, elista[i].pais);
+            printf("--------------------------");
+    }
+    system("pause");
+    system("cls");
 }

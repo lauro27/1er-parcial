@@ -5,6 +5,7 @@
 #include "actor.h"
 #define LIBRE 0
 #define OCUPADO 1
+#define BORRADO -1
 #define TRUE 1
 #define FALSE 0
 
@@ -66,7 +67,7 @@ char generoDePelicula(int g)
 }
 
 
-ePelicula pedirPelicula(eActor l[])
+ePelicula pedirPelicula(eActor l[], int tam)
 {
     ePelicula p;
     int principalAux;
@@ -76,7 +77,7 @@ ePelicula pedirPelicula(eActor l[])
         p.id = idCounter;
 
         printf("Ingrese Codigo: ");
-        scanf("&d", &p.codigo);
+        scanf("%d", &p.codigo);
 
         printf("Ingrese Titulo: ");
         fflush(stdin);
@@ -88,13 +89,13 @@ ePelicula pedirPelicula(eActor l[])
 
         printf("Ingrese Genero (1- Accion, 2- Comedia, 3-Terror, Default- Otro): ");
         fflush(stdin);
-        gets(p.generoid);
+        scanf("%d", &p.generoid);
 
         printf("Ingrese ID Actor Principal (Ingrese 0 si no hay): ");
         fflush(stdin);
         scanf("%d", &principalAux);
 
-        valid = validarAltaPelicula(p);
+        valid = validarAltaPelicula(p,l,principalAux, tam);
         p.estado = OCUPADO;
     }while(valid == FALSE);
     p.principal = getActor(principalAux,l);
@@ -102,13 +103,13 @@ ePelicula pedirPelicula(eActor l[])
 }
 
 
-int insertarPelicula(ePelicula l[], eActor la[])
+int insertarPelicula(ePelicula l[], eActor la[], int tam)
 {
     int i;
-    i = indexDisponible(l);
+    i = indexDisponible(l, tam);
     if (i != -1)
     {
-        l[i] = pedirPelicula(la);
+        l[i] = pedirPelicula(la, tam);
     }
     else{ mostrarError("FullArray");}
     system("cls");
@@ -116,12 +117,12 @@ int insertarPelicula(ePelicula l[], eActor la[])
 }
 
 
-int indexDisponible(ePelicula l[])
+int indexDisponible(ePelicula l[], int tam)
 {
     int i;
     int index = -1;
 
-    for(i = 0; i < sizeof(l); i++)
+    for(i = 0; i < tam; i++)
     {
         if (l[i].estado == 0)
         {
@@ -133,9 +134,9 @@ int indexDisponible(ePelicula l[])
 }
 
 
-int validarAltaPelicula(ePelicula p, eActor l[], int prin)
+int validarAltaPelicula(ePelicula p, eActor l[], int prin, int tam)
 {
-    if(p.codigo < 999 && p.codigo >= 0)
+    if(p.codigo < 999 && p.codigo >= 100)
     {
         mostrarError("Codigo fuera de rango(0 - 999) \nIntente nuevamente\n");
         return FALSE;
@@ -158,9 +159,9 @@ int validarAltaPelicula(ePelicula p, eActor l[], int prin)
             return FALSE;
         }
     int check = FALSE;
-    for(i=0; i< sizeof(l); i++)
+    for(i=0; i< tam; i++)
     {
-        if(prin == l.id)
+        if(prin == l[i].id)
         {
             check = prin;
 
@@ -175,7 +176,77 @@ int validarAltaPelicula(ePelicula p, eActor l[], int prin)
 
 }
 
+int buscarPorCodigo(ePelicula l[],int cod, int tam)
+{
+    int i;
+    for(i=0; i< tam; i++)
+    {
+        if (cod == l[i].codigo)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 
+void borrarPelicula(ePelicula l[], int tam)
+{
+    int auxcod;
+    scanf("%d",&auxcod);
+    int index = buscarPorCodigo(l,auxcod,tam);
+    if(index!= -1)
+    {
+        l[index].estado = BORRADO;
+        printf("Pelicula borrada");
+        system("pause");
+    }
+    else
+    {
+        mostrarError("Codigo no encontrado");
+    }
+}
+
+ePelicula editarPelicula(ePelicula p, int tam)
+{
+    int opcion;
+    printf("1 - Editar Titulo\n2 - Editar Actor\n3 - Editar año de estreno");
+    switch(opcion){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            }
+}
+
+void mostrarPorEstreno(ePelicula l[], int tam)
+{
+    int i,j;
+    ePelicula extralista[tam] = l;
+    for (i = 0; i < tam; i++)
+	{
+		for (j = 0; j < tam; j++)
+		{
+			if (extralista[j] > extralista[i])
+			{
+				int tmp = extralista[i];
+				extralista[i] = extralista[j];
+				extralista[j] = tmp;
+			}
+		}
+	}
+	for(i=0; i< tam;i++)
+    {
+        if (extralista[i].estado == OCUPADO)
+        {
+            printf(" ID: %d\n Codigo: %d\n Titulo: %s\n Fecha: %s\n Genero: %s\n Actor principal: %s\n", extralista[i].id, extralista[i].codigo, extralista[i].titulo, extralista[i].titulo, extralista[i].fecha, generoDePelicula(extralista[i].generoid), extralista[i].principal.nombre);
+            printf("--------------------------");
+        }
+    }
+    system("pause");
+    system("cls");
+}
 
 void mostrarError(char error[])
 {
