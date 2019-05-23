@@ -11,15 +11,15 @@
 
 void inicializarPelicula(ePelicula l[], eActor la[], int tam, int tamact)
 {
-    int id[4] = {1,2,3,4};
-    int codigo[4] = {999,666,555,777};
-    char titulo[4][50] = {"Terminator", "Thor", "It", "Gladiador"};
-    int anio[4] = {1984,1999,2000,2001};
-    int generoid[4] = {1,1,3,4};
-    int actorid[4] = {1,5,4,4};
+    int id[8] = {1,2,3,4,5,6,7,8};
+    int codigo[8] = {999,666,555,777,111,222,101,202};
+    char titulo[8][50] = {"Terminator", "Thor", "It", "Gladiador","Scary Movie", "Yo soy asi", "Scary Movie 2", "Sexto sentido"};
+    int anio[8] = {1984,1999,2000,2001,1004,1005,1006,1007};
+    int generoid[8] = {1,1,3,4,2,4,2,4};
+    int actorid[8] = {1,5,4,4,4,4,1,1};
     int i;
     int index;
-    for (i = 0;i < 4; i++)
+    for (i = 0;i < 8; i++)
     {
         index = indexDisponible(l, tam);
         l[index].estado = OCUPADO;
@@ -29,11 +29,11 @@ void inicializarPelicula(ePelicula l[], eActor la[], int tam, int tamact)
         l[index].anio = anio[i];
         l[index].generoid = generoid[i];
         l[index].actorid = actorid[i];
-        l[index].principal = getActor(actorid[i], la);
+        l[index].principal = getActor(actorid[i], la, tamact);
     }
 }
 
-void mostrarPeliculasCA(ePelicula lista[], eActor listaA[], int tam)
+void mostrarPeliculasCA(ePelicula lista[], eActor listaA[], int tam, int tamact)
 {
     int i;
     for(i=0; i< tam;i++)
@@ -42,20 +42,20 @@ void mostrarPeliculasCA(ePelicula lista[], eActor listaA[], int tam)
         {
             if (lista[i].principal.id != -1)
             {
-                eActor aux = getActor(lista[i].actorid,listaA);
+                eActor aux = getActor(lista[i].actorid,listaA, tamact);
                 char nombre[50];
                 char genero[10];
                 strcpy(genero, generoDePelicula(lista[i].generoid));
                 strcpy(nombre, aux.nombre);
-                printf(" ID: %d\n ", lista[i].id);
-                printf("Codigo: %d\n", lista[i].codigo);
-                printf("Titulo: %s\n", lista[i].titulo);
-                printf("Fecha: %d\n", lista[i].anio);
-                printf("Genero: %s\n", genero);
-                printf("Actor Principal: %s\n", nombre);
+                printf(" ID: %d \t ", lista[i].id);
+                printf("Codigo: %d \t", lista[i].codigo);
+                printf("Titulo: %s \t", lista[i].titulo);
+                printf("Fecha: %d \t", lista[i].anio);
+                printf("Genero: %s \t", genero);
+                printf("Actor Principal: %s", nombre);
 
 
-                printf("--------------------------\n");
+                printf("\n");
             }
         }
     }
@@ -74,8 +74,7 @@ void mostrarPeliculasSA(ePelicula lista[], int tam)
             if (lista[i].principal.id == -1)
             {
 
-                printf(" ID: %d \n Codigo: %d \n Titulo: %s \n Fecha: %d \n Genero: %s \n", lista[i].id, lista[i].codigo, lista[i].titulo, lista[i].anio, generoDePelicula(lista[i].generoid));
-                printf("--------------------------\n");
+                printf(" ID: %d \5t Codigo: %d \5t Titulo: %s \15t Fecha: %d \5t Genero: %s \n", lista[i].id, lista[i].codigo, lista[i].titulo, lista[i].anio, generoDePelicula(lista[i].generoid));
             }
         }
     }
@@ -128,14 +127,14 @@ ePelicula pedirPelicula(eActor l[], int tam, int idC)
         scanf("%d", &p.generoid);
 
         printf("Ingrese ID Actor Principal (Ingrese 0 si no hay): ");
-         mostrarActores(, tam)
+         mostrarActores(l, tam);
         fflush(stdin);
         scanf("%d", &principalAux);
 
         valid = validarAltaPelicula(p,l,principalAux, tam);
         p.estado = OCUPADO;
     }while(valid == FALSE);
-    p.principal = getActor(principalAux,l);
+    p.principal = getActor(principalAux,l, tam);
     p.actorid = principalAux;
     return p;
 }
@@ -326,7 +325,7 @@ void mostrarPorEstreno(ePelicula l[], int tam)
     system("cls");
 }
 
-void mostrarTodo(ePelicula lista[], eActor listaA[], int tam)
+void mostrarTodo(ePelicula lista[], eActor listaA[], int tam, int tamact)
 {
     int i;
     for(i=0; i< tam;i++)
@@ -335,7 +334,7 @@ void mostrarTodo(ePelicula lista[], eActor listaA[], int tam)
         {
             if (lista[i].principal.id != -1)
             {
-                eActor aux = getActor(lista[i].actorid, listaA);
+                eActor aux = getActor(lista[i].actorid, listaA, tamact);
                 printf(" ID: %d\n Codigo: %d\n Titulo: %s\n Fecha: %d\n Genero: %s\n Actor principal: %s\n", lista[i].id, lista[i].codigo, lista[i].titulo, lista[i].anio, generoDePelicula(lista[i].generoid), aux.nombre);
                 printf("--------------------------\n");
             }
@@ -348,14 +347,14 @@ void mostrarTodo(ePelicula lista[], eActor listaA[], int tam)
     }
 }
 
-void mostrarInAmerica(ePelicula lista[], eActor listaA[], int tam)
+void mostrarInAmerica(ePelicula lista[], eActor listaA[], int tam, int tamact)
 {
     int i;
     for(i=0; i< tam;i++)
     {
         if (lista[i].estado == OCUPADO)
         {
-            eActor aux = getActor(lista[i].actorid, listaA);
+            eActor aux = getActor(lista[i].actorid, listaA, tamact);
             if(strcmp(aux.pais, "EEUU") == 0)
             {
                 printf(" ID: %d\n Codigo: %d\n Titulo: %s\n Fecha: %d\n Genero: %s\n Actor principal: %s\n", lista[i].id, lista[i].codigo, lista[i].titulo, lista[i].anio, generoDePelicula(lista[i].generoid), aux.nombre);

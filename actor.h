@@ -26,8 +26,8 @@ void inicializarActor(eActor[]);
  * \return eActor Estructura de Actor
  *
  */
-eActor getActor(int, eActor[]);
+eActor getActor(int, eActor[], int);
 
 void mostrarPorPais(eActor [], int);
 
-void mostrarActores(eActor [], int)
+void mostrarActores(eActor [], int);

@@ -22,10 +22,10 @@ void inicializarActor(eActor l[])
     strcpy(l[4].pais,"Uruguay");
 }
 
-eActor getActor(int aux, eActor l[])
+eActor getActor(int aux, eActor l[], int tam)
 {
     int i;
-    for(i=0; i<sizeof(l); i++)
+    for(i=0; i<tam; i++)
     {
         if(aux == l[i].id)
             {
@@ -59,7 +59,7 @@ void mostrarPorPais(eActor elista[],int tam)
     system("cls");
 }
 
-void mostrarActores(eActor l[], tam)
+void mostrarActores(eActor l[], int tam)
 {
     int i;
     printf("ID\tNombre\tNacionalidad");

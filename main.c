@@ -7,7 +7,7 @@
 
 #define TRUE 1
 #define FALSE 0
-#define TAM 5
+#define TAM 10
 #define TAMPELI 10
 
 void menuMostrar(ePelicula[], eActor[]);
@@ -60,7 +60,7 @@ void menuMostrar(ePelicula p[], eActor a[])
     scanf("%d", &op);
     switch(op){
     case 1:
-        mostrarPeliculasCA(p,a, TAMPELI);
+        mostrarPeliculasCA(p,a, TAMPELI, TAM);
         break;
     case 2:
         mostrarPeliculasSA(p, TAMPELI);
@@ -72,10 +72,10 @@ void menuMostrar(ePelicula p[], eActor a[])
         mostrarPorPais(a, TAM);
         break;
     case 5:
-        mostrarTodo(p,a,TAMPELI);
+        mostrarTodo(p,a,TAMPELI, TAM);
         break;
     case 6:
-        mostrarInAmerica(p,a,TAMPELI);
+        mostrarInAmerica(p,a,TAMPELI, TAM);
     }
 
 }

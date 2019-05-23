@@ -32,7 +32,7 @@ void mostrarPeliculasSA(ePelicula [], int);
  * \return void
  *
  */
-void mostrarPeliculasCA(ePelicula [], eActor[], int);
+void mostrarPeliculasCA(ePelicula [], eActor[], int, int);
 
 
 /** \brief Usado en mostrarPeliculaCA y mostrarPeliculaSA para cambiar los id de genero por strings con el genero correspondiente
@@ -97,9 +97,9 @@ void editarPelicula(ePelicula[], eActor[], int, int);//COMPLETAR
 
 void mostrarPorEstreno(ePelicula[], int);
 
-void mostrarTodo(ePelicula[],eActor[], int);
+void mostrarTodo(ePelicula[],eActor[], int, int);
 
-void mostrarInAmerica(ePelicula[], eActor[], int);
+void mostrarInAmerica(ePelicula[], eActor[], int, int);
 
 /** \brief Muestra un error con un mensaje.
  *

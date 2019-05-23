@@ -17,31 +17,29 @@
 	"actor.h"
 	"pelicula.h"
 
-1557986250 source:c:\users\juan pablo lamas\documents\facultad\1er-parcial\actor.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"pelicula.h"
-	"actor.h"
-
-1557986275 c:\users\juan pablo lamas\documents\facultad\1er-parcial\pelicula.h
-	"actor.h"
-
-1557781198 c:\users\juan pablo lamas\documents\facultad\1er-parcial\actor.h
-
-1557983926 source:c:\users\juan pablo lamas\documents\facultad\1er-parcial\main.c
+1558477188 source:c:\users\juan pablo lamas\documents\facultad\1er-parcial\actor.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"actor.h"
+
+1558485990 c:\users\juan pablo lamas\documents\facultad\1er-parcial\pelicula.h
+	"actor.h"
+
+1558477219 c:\users\juan pablo lamas\documents\facultad\1er-parcial\actor.h
+
+1558557686 source:c:\users\juan pablo lamas\documents\facultad\1er-parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"actor.h"
 	"pelicula.h"
 
-1557984490 source:c:\users\juan pablo lamas\documents\facultad\1er-parcial\pelicula.c
+1558560579 source:c:\users\juan pablo lamas\documents\facultad\1er-parcial\pelicula.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"pelicula.h"
-	"actor.h"
 
 1558016816 source:d:\1er_parcial_lamas\pelicula.c
 	<stdio.h>
