@@ -47,3 +47,27 @@
 	<string.h>
 	"pelicula.h"
 
+1562241849 source:d:\lamas\1er-parcial\pelicula.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pelicula.h"
+
+1562241849 d:\lamas\1er-parcial\pelicula.h
+	"actor.h"
+
+1562247081 d:\lamas\1er-parcial\actor.h
+
+1562247135 source:d:\lamas\1er-parcial\actor.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"actor.h"
+
+1562247081 source:d:\lamas\1er-parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"actor.h"
+	"pelicula.h"
+

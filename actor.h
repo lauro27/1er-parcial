@@ -6,6 +6,7 @@ typedef struct
     int id;
     char nombre[50];
     char pais[20];
+    int edad;
 }eActor;
 
 #endif // ACTOR_H_INCLUDED
@@ -31,3 +32,15 @@ eActor getActor(int, eActor[], int);
 void mostrarPorPais(eActor [], int);
 
 void mostrarActores(eActor [], int);
+
+void mostrarActoresEdad(eActor [], int);
+
+void mostrarActoresMayores(eActor [], int);
+
+void insertarActor(eActor [], int);
+
+int modificarActor(eActor [],int);
+
+void mostrarActoresPais(eActor [],int );
+
+void borrarActoresPais(eActor [],int);
